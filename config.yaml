@@ -1,0 +1,94 @@
+# data & IO
+data_csv: data/train_preprocessed.csv
+images_dir: train_images
+out_dir: outputs
+
+# model choices
+image_backbone: vit_base_patch16_224
+text_model: sentence-transformers/all-mpnet-base-v2
+
+# sizes
+img_size: 224
+text_max_len: 256
+
+# training
+epochs: 15
+
+# batch & memory
+batch_size: 32
+grad_accum_steps: 2  
+num_workers: 10
+pin_memory: true
+
+# optimizer & scheduler
+lr: 1e-4
+weight_decay: 1e-2
+warmup_ratio: 0.05
+
+# lr scaling (for backbone)
+image_lr_scale: 0.3
+text_lr_scale: 0.3
+
+# cross-val
+num_folds: 5
+price_bucket_q: 10
+
+# checkpointing
+save_every_epochs: 5
+save_best_only: true
+
+# logging
+print_freq: 100
+
+# amp
+use_amp: true
+
+# early stopping
+early_stop_patience: 3
+
+# numeric columns from preprocessed csv
+numeric_cols:
+  - amount_per_unit_log1p
+  - has_quantity
+  - is_weight
+  - is_volume
+  - is_count
+  - pack_count
+
+# model dims & fusion transformer (increased capacity)
+embed_dim: 512        # backbone output dim (keep 512 for current backbones)
+proj_dim: 384         # fusion d_model (P)
+aux_proj_dim: 256     # projection used for aux heads
+
+fusion_n_layers: 4
+fusion_n_heads: 8
+fusion_dim_feedforward: 1536
+fusion_dropout: 0.1
+use_patch_tokens: true
+fusion_use_fuse_token: true
+
+# loss weights (composite)
+loss_lambda_nll: 0.60
+loss_lambda_smape: 0.30
+loss_lambda_rel: 0.1
+
+# logvar / variance stabilization
+logvar_min: -1.0
+var_penalty: 0.25
+var_penalty_thresh: -1.5
+
+# gradient clipping
+grad_clip: 5.0
+
+# ensemble / stacking
+train_aux_models: true  
+train_stacker: true 
+stacker_alpha: 1.0
+
+# misc
+seed: 42
+
+# gradual unfreeze / encoder fine-tuning
+encoder_freeze_initial_epochs: 1
+encoder_unfreeze_epochs: 3        
+encoder_unfreeze_lr_scale: 0.33

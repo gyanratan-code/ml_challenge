@@ -1,0 +1,27 @@
+# Core data / ML libs
+pandas>=1.5
+numpy>=1.24
+pyyaml>=6.0
+tqdm>=4.64
+
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Transformers & related
+transformers>=4.30.0
+sentence-transformers>=2.2.2 
+
+# Vision & model helpers
+timm>=0.9.2
+Pillow>=9.0
+
+# Scikit-learn + persistence
+scikit-learn==1.5
+joblib>=1.2
+
+# pre-processing utility
+quantulum3>=0.8
+pint>=0.20
+
+# Utilities / typing
+typing_extensions>=4.0
