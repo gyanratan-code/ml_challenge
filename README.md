@@ -82,7 +82,7 @@ Outputs (by default) go to `out_dir` configured in `config.yaml` and include per
 
 ---
 
-## 8. Results (placeholder)
+## 8. Results
 
 * **OOF SMAPE (main):** `45.1%`
 * **Best fold example:** `smape=45.4%`
