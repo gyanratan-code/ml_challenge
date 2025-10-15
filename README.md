@@ -84,8 +84,6 @@ Outputs (by default) go to `out_dir` configured in `config.yaml` and include per
 
 ## 8. Results (placeholder)
 
-> Replace these with your actual run numbers.
-
 * **OOF SMAPE (main):** `45.1%`
 * **Best fold example:** `smape=45.4%`
 
